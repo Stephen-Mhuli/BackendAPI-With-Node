@@ -31,11 +31,11 @@ app.use(`${api}/products`, productsRoutes);
 app.use(`${api}/users`, usersRoutes);
 app.use(`${api}/orders`, ordersRoutes);
 
-//Database
+//Database connection
 mongoose.connect(process.env.CONNECTION_STRING, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    //dbName: 'kilimoshopdb'
+    dbName: 'eshop-database'
 })
 .then(()=>{
     console.log('Database Connection is ready...')

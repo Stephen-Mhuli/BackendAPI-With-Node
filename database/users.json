@@ -22,9 +22,9 @@
   "_id": {
     "$oid": "5f168810be2e99a158c08505"
   },
-  "isAdmin": true,
-  "name": "stephen mhuli",
-  "email": "stephenmhuli99@gmail.com",
+  "isAdmin": false,
+  "name": "steve mhuli",
+  "email": "stevenmhuli99@gmail.com",
   "passwordHash": "$2a$10$0TZN47PNyhVml7I7B32xtuvbR04dmiAhRKBUUvNE4kQnFS5zCZNZK",
   "phone": "0742726716",
   "__v": 0

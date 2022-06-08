@@ -76,8 +76,7 @@ router.post(`/`, uploadOptions.single('image'), async (req, res) => {
         isFeatured: req.body.isFeatured,
     });
 
-    product = await product.save();
-
+    product = await product.save(); 
     if (!product) return res.status(500).send('The product cannot be created');
 
     res.send(product);

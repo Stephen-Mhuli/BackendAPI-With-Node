@@ -13,6 +13,7 @@ router.get(`/`, async (req, res) =>{
     res.send(userList);
 })
 
+
 router.get('/:id', async(req,res)=>{
     const user = await User.findById(req.params.id).select('-passwordHash');
 
@@ -22,6 +23,8 @@ router.get('/:id', async(req,res)=>{
     res.status(200).send(user);
 })
 
+
+
 router.post('/', async (req,res)=>{
     let user = new User({
         name: req.body.name,
@@ -29,6 +32,7 @@ router.post('/', async (req,res)=>{
         passwordHash: bcrypt.hashSync(req.body.password, 10),
         phone: req.body.phone,
         isAdmin: req.body.isAdmin,
+        isAdmin: req.body.isSeller,
         street: req.body.street,
         apartment: req.body.apartment,
         zip: req.body.zip,
@@ -61,6 +65,7 @@ router.put('/:id',async (req, res)=> {
             passwordHash: newPassword,
             phone: req.body.phone,
             isAdmin: req.body.isAdmin,
+            isAdmin: req.body.isSeller,
             street: req.body.street,
             apartment: req.body.apartment,
             zip: req.body.zip,
@@ -87,7 +92,8 @@ router.post('/login', async (req,res) => {
         const token = jwt.sign(
             {
                 userId: user.id,
-                isAdmin: user.isAdmin
+                isAdmin: user.isAdmin,
+                // isSeller: user.isSeller,
             },
             secret,
             {expiresIn : '1d'}
@@ -109,6 +115,7 @@ router.post('/register', async (req,res)=>{
         passwordHash: bcrypt.hashSync(req.body.password, 10),
         phone: req.body.phone,
         isAdmin: req.body.isAdmin,
+        isSeller: req.body.isSeller,
         street: req.body.street,
         apartment: req.body.apartment,
         zip: req.body.zip,
@@ -132,7 +139,7 @@ router.delete('/:id', (req, res)=>{
             return res.status(404).json({success: false , message: "user not found!"})
         }
     }).catch(err=>{
-       return res.status(500).json({success: false, error: err}) 
+       return res.status(500).json({success: false, error: err})
     })
 })
 

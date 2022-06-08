@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+// const crypto = require("crypto")
 
 const userSchema = new mongoose.Schema({
     name: {
@@ -18,6 +19,10 @@ const userSchema = new mongoose.Schema({
         required: true,
     },
     isAdmin: {
+        type: Boolean,
+        default: false,
+    },
+    isSeller: {
         type: Boolean,
         default: false,
     },
